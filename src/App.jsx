@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import React from 'react';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      <h2>Счетчик:</h2>
-      <h1>{count}</h1>
-      <button onClick={() => setCount((count) => count - 1)}>- Минус</button>
-      <button onClick={() => setCount((count) => count + 1)}>Плюс +</button>
+      <button onClick={() => setOpen(true)}>Открыть модальное окно</button>
+      <div className={`overlay animated ${open ? 'show' : ''}`}>
+        <div className="modal">
+          <button className="close" onClick={() => setOpen(false)}>&times;</button>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quam possimus excepturi unde! Repudiandae nesciunt est atque natus ipsum maxime dicta sapiente sequi dignissimos et ex odio necessitatibus, quo facere?</p>
+        </div>
+      </div>
     </>
   );
 }
